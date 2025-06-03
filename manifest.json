@@ -1,11 +1,10 @@
 {
-	"id": "sample-plugin",
-	"name": "Sample Plugin",
-	"version": "1.0.0",
-	"minAppVersion": "0.15.0",
-	"description": "Demonstrates some of the capabilities of the Obsidian API.",
-	"author": "Obsidian",
-	"authorUrl": "https://obsidian.md",
-	"fundingUrl": "https://obsidian.md/pricing",
-	"isDesktopOnly": false
+  "id": "checkbox-autochecker-obsidian",
+  "name": "Checkbox Autochecker",
+  "version": "1.0.0",
+  "minAppVersion": "0.15.0",
+  "description": "Automatically checks/unchecks parent and subtask checkboxes in markdown files.",
+  "author": "klaas klee",
+  "authorUrl": "https://github.com/klaasklee",
+  "main": "main.js"
 }

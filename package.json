@@ -1,24 +1,25 @@
 {
-	"name": "obsidian-sample-plugin",
+	"name": "checkbox-autochecker",
 	"version": "1.0.0",
-	"description": "This is a sample plugin for Obsidian (https://obsidian.md)",
+	"description": "This is a plugin for Obsidian. It automatically checks/unchecks parent and subtask checkboxes in markdown files.",
 	"main": "main.js",
 	"scripts": {
-		"dev": "node esbuild.config.mjs",
-		"build": "tsc -noEmit -skipLibCheck && node esbuild.config.mjs production",
-		"version": "node version-bump.mjs && git add manifest.json versions.json"
+		"dev": "rollup -c --watch",
+		"build": "rollup -c"
 	},
 	"keywords": [],
 	"author": "",
 	"license": "MIT",
 	"devDependencies": {
-		"@types/node": "^16.11.6",
-		"@typescript-eslint/eslint-plugin": "5.29.0",
-		"@typescript-eslint/parser": "5.29.0",
-		"builtin-modules": "3.3.0",
-		"esbuild": "0.17.3",
-		"obsidian": "latest",
-		"tslib": "2.4.0",
-		"typescript": "4.7.4"
+		"@rollup/plugin-node-resolve": "^16.0.1",
+		"@rollup/plugin-typescript": "^12.1.2",
+		"@types/codemirror": "^5.60.16",
+		"obsidian": "^1.5.0",
+		"rollup": "^3.29.5",
+		"tslib": "^2.8.1",
+		"typescript": "^5.8.3"
+	},
+	"dependencies": {
+		"@rollup/plugin-commonjs": "^28.0.3"
 	}
 }
