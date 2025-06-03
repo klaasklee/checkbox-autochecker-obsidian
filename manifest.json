@@ -1,10 +1,10 @@
 {
-  "id": "checkbox-autochecker-obsidian",
+  "id": "checkbox-autochecker",
   "name": "Checkbox Autochecker",
   "version": "1.0.0",
-  "minAppVersion": "0.15.0",
-  "description": "Automatically checks/unchecks parent and subtask checkboxes in markdown files.",
-  "author": "klaas klee",
+  "minAppVersion": "1.0.0",
+  "description": "Automatically sync parent and child checkboxes with flexible propagation modes in Markdown Files.",
+  "author": "Klaas Klee",
   "authorUrl": "https://github.com/klaasklee",
   "main": "main.js"
 }

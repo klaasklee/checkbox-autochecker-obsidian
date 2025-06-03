@@ -1,15 +1,15 @@
 {
 	"name": "checkbox-autochecker",
 	"version": "1.0.0",
-	"description": "This is a plugin for Obsidian. It automatically checks/unchecks parent and subtask checkboxes in markdown files.",
+	"description": "Automatically sync parent and child checkboxes with flexible propagation modes in Markdown Files.",
+	"author": "Klaas Klee",
+	"license": "MIT",
 	"main": "main.js",
 	"scripts": {
 		"dev": "rollup -c --watch",
 		"build": "rollup -c"
 	},
 	"keywords": [],
-	"author": "",
-	"license": "MIT",
 	"devDependencies": {
 		"@rollup/plugin-node-resolve": "^16.0.1",
 		"@rollup/plugin-typescript": "^12.1.2",
