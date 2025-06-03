@@ -25,3 +25,4 @@ data.json
 node_modules/
 dist/
 *.js
+.npmrc
