@@ -45,7 +45,7 @@ Supports hierarchical task lists with flexible propagation modes.
 Alternatively, you can also clone the repository and build the plugin yourself:
 
 ```bash
-git clone https://github.com/yourusername/checkbox-autochecker-obsidian.git
+git clone https://github.com/klaasklee/checkbox-autochecker-obsidian.git
 cd checkbox-autochecker-obsidian
 npm install
 npm run build
