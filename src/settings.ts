@@ -8,7 +8,7 @@ export interface CheckboxAutocheckerSettings {
 }
 
 export const DEFAULT_SETTINGS: CheckboxAutocheckerSettings = {
-	syncMode: "partial-strict",
+	syncMode: "loose",
 	loggingEnabled: false
 };
 
