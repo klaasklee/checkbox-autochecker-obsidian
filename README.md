@@ -36,9 +36,20 @@ Supports hierarchical task lists with flexible propagation modes.
 
 ### Manual Installation
 
-1. Clone or download this repository.
-2. Run `npm install && npm run build` to generate plugin files.
-3. Copy the generated `manifest.json` and `main.js` files into your Obsidian plugins folder.
+1. Download the latest release from the [Releases](https://github.com/klaasklee/checkbox-autochecker-obsidian/releases) page.
+2. Extract the contents into your Obsidian plugins folder:
+   - Create a new folder inside your Obsidian plugins directory named `checkbox-autochecker-obsidian`.
+   - Move the extracted files (`manifest.json`, `main.js`) into this folder.
+3. Enable the plugin inside Obsidian.
+
+Alternatively, you can also clone the repository and build the plugin yourself:
+
+```bash
+git clone https://github.com/yourusername/checkbox-autochecker-obsidian.git
+cd checkbox-autochecker-obsidian
+npm install
+npm run build
+```
 
 ---
 
