@@ -24,10 +24,9 @@ export class CheckboxAutocheckerSettingTab extends PluginSettingTab {
 		const { containerEl } = this;
 
 		containerEl.empty();
-		containerEl.createEl("h2", { text: "Checkbox Autochecker Settings" });
 
 		new Setting(containerEl)
-			.setName("Sync Mode")
+			.setName("Sync mode")
 			.setDesc("Control how parent checkboxes affect children when toggled.")
 			.addDropdown((dropdown) =>
 				dropdown
@@ -42,7 +41,7 @@ export class CheckboxAutocheckerSettingTab extends PluginSettingTab {
 			);
 
 		new Setting(containerEl)
-			.setName("Enable Logging")
+			.setName("Enable logging")
 			.setDesc("Log debug information to console.")
 			.addToggle((toggle) =>
 				toggle

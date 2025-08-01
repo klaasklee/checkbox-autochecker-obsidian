@@ -1,6 +1,10 @@
 import { Plugin, TFile, Editor } from "obsidian";
 import { CheckboxAutocheckerSettingTab, DEFAULT_SETTINGS, CheckboxAutocheckerSettings, SyncMode } from "./settings";
 
+// Todo:
+//  - buggy behaviour with strict or partial strict mode when adding and removing checkboxes
+//  	- maybe pause evaluation while on edit mode?
+
 export default class CheckboxAutochecker extends Plugin {
 
 	private fileCache: Map<string, string> = new Map();
@@ -66,25 +70,30 @@ export default class CheckboxAutochecker extends Plugin {
 	}
 
 	// runs when file is saved/modified
-	async syncCurrentFile(file: TFile) {
-		// Prevent re-processing our own updates
-		if (this.filesBeingUpdated.has(file.path)) {
-			this.filesBeingUpdated.delete(file.path);
-			return;
+async syncCurrentFile(file: TFile) {
+	// Prevent re-processing our own updates
+	if (this.filesBeingUpdated.has(file.path)) {
+		this.filesBeingUpdated.delete(file.path);
+		return;
+	}
+
+	// only handle markdown files - no .canvas
+	if (file.extension !== "md") {
+		return;
+	}
+
+	const previousContent = this.fileCache.get(file.path) ?? "";
+
+	this.filesBeingUpdated.add(file.path);
+
+	await this.app.vault.process(file, (currentContent) => {
+		if (previousContent === currentContent) {
+			this.fileCache.set(file.path, currentContent);
+			return currentContent; // no change
 		}
 
-		// only handle markdown files - no .canvas
-		if (file.extension !== "md") {
-			return;
-		}
-
-		const previousContent = this.fileCache.get(file.path) ?? "";
-		const currentContent = await this.app.vault.read(file);
-
-		if (previousContent === currentContent) return;
-
-		// find which line was changed und run logic
 		const changedLineIdx = this.detectChangedLine(previousContent, currentContent);
+
 		const updatedContent = syncCheckboxes(
 			currentContent,
 			changedLineIdx,
@@ -92,15 +101,14 @@ export default class CheckboxAutochecker extends Plugin {
 			this.settings.loggingEnabled
 		);
 
-		// only write back if any changes occurred
-		if (currentContent !== updatedContent) {
-			this.filesBeingUpdated.add(file.path);
-			await this.app.vault.modify(file, updatedContent);
-			this.fileCache.set(file.path, updatedContent);
-		} else {
-			this.fileCache.set(file.path, currentContent);
-		}
-	}
+		// update cache (regardless of actual changes to avoid stale state)
+		this.fileCache.set(file.path, updatedContent);
+
+		return updatedContent;
+	});
+
+	this.filesBeingUpdated.delete(file.path);
+}
 
 	detectChangedLine(oldContent: string, newContent: string): number | null {
 		const oldLines = oldContent.split("\n");

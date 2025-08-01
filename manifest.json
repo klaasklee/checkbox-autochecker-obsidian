@@ -6,6 +6,5 @@
   "description": "Automatically sync parent and child checkboxes with flexible propagation modes in Markdown Files.",
   "author": "Klaas Klee",
   "authorUrl": "https://github.com/klaasklee",
-  "main": "main.js",
   "isDesktopOnly": true
 }
